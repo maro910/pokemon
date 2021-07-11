@@ -33,6 +33,6 @@ if (lowercase == 'shiny'):
 
 #To connect to a database, we need to talk to it
 #An engine provides that interface
-engine = create_engine('mysql://root:codio@localhost/PokeIndex')
+engine = create_engine('mysql://root:codio@localhost/pokeIndex')
 
 pokeDict.to_sql(lowercase, con=engine, if_exists='replace', index=False)
