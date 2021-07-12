@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import sqlalchemy
 from sqlalchemy import create_engine
+import os
 
 
 # Returns a JSON dict with the keys being Pokemon ID
@@ -48,6 +49,9 @@ def createDatabase(data, user):
   # An engine provides that interface
   engine = create_engine('mysql://root:codio@localhost/pokeIndex')
   data.to_sql(user, con=engine, if_exists='replace', index=False)
+  
+  # Saves Database to a file
+  os.system("mysqldump -u root -pcodio pokeIndex > poke.sql")
 
 if __name__ == '__main__':
     main()
